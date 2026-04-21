@@ -2,108 +2,119 @@
 
 ## Core Product
 
-PokerSense is a Railbird-inspired poker hand review workspace.
-
+PokerSense is a LeetCode-style poker hand review workspace.
 This is NOT a chatbot.
-This is a structured analysis and replay tool.
+This is a structured analysis tool.
 
 ---
 
-## Layout Architecture (Critical)
+## Layout Architecture (CRITICAL)
 
-The app uses a Railbird-style workspace:
+The app uses a 3-panel layout:
 
-- Thin global rail on the far left for high-level navigation.
-- Secondary left panel that can switch between:
-  - General navigation such as Home, Total Session View, and Saved Hands.
-  - A specific session view with expandable sessions and clickable hands.
-- Center workspace for hand replay and hand-level controls.
-- Persistent right coach panel for analysis.
-
-The root page should assemble components and own only minimal selected hand/session state. Keep large UI logic inside reusable components.
+- LEFT SIDEBAR (navigation)
+- CENTER WORKSPACE (main content)
+- RIGHT PANEL (AI coach)
 
 ---
 
-## Left Navigation
+## Sidebar (Navigation Bar)
 
-The left side has two purposes:
-
-- Global navigation: Home, total session view, saved hands, and future account-level destinations.
-- Session navigation: selected session context, expandable sessions, and hand-to-hand navigation.
-
-Rules:
-
-- Sessions contain multiple hands.
-- Sessions are expandable and collapsible.
-- Clicking a hand loads it into the workspace.
-- The selected hand must be visually distinct.
-- This area is navigation, not analysis content.
+- Sessions contain multiple hands
+- Sessions are expandable
+- Clicking a hand loads it into workspace
+- This is navigation, not content
 
 ---
 
 ## Center Workspace
 
-The center workspace should resemble a poker replay surface:
+Tabs:
+- Replay (default)
+- Context
 
-- Top breadcrumb/header with current session and hand context.
-- Poker table visualization in the middle.
-- Board cards, hero cards, pot, and simple seat labels.
-- Decision or action summary card below the table.
-- Full replay control bar at the bottom.
-
-Replay controls must include:
-
-- Previous hand
-- Backward action/street
-- Restart/replay
-- Forward action/street
-- Next hand
-- Future street jump controls when the full replay engine is added
+Replay is the PRIMARY experience.
 
 ---
 
-## Coach Panel
+## Replay UI (CORE FEATURE)
 
-The right panel is always visible on desktop.
+Must include:
 
-It should contain structured analysis, not chatbot messages:
+- Poker table visualization
+- Hero + positions
+- Board cards
+- Pot size
+- Action timeline
+- Current action highlight
 
-- Coach title and analysis context
-- Optimal play card
-- Explanation
-- Equity or EV highlights
-- Quick response buttons
-- Input field for the user's read or question
+Navigation:
+- Previous action
+- Next action
+- Jump to street
 
-Do NOT implement coach personalities in V1.
+---
+
+## Context Tab
+
+Contains:
+- Stakes
+- Position
+- Stack size
+- Notes
+- Raw hand history
+
+Read-only for V1
+
+---
+
+## Coach Panel (RIGHT SIDE)
+
+- Always visible (desktop)
+- Updates based on current action
+- Contains:
+  - Prompt
+  - Quick responses
+  - Text input
+  - Feedback
+
+Do NOT implement chatbot style UI.
 
 ---
 
 ## Routing
 
-- `/` -> workspace
-- `/create` -> create hand
-
-Do not create separate review or summary routes for V1.
+- `/` → workspace
+- `/create` → create 
 
 ---
 
 ## Design Philosophy
 
-- Dark Railbird-inspired workspace
-- Soft borders and rounded panels
-- Minimal clutter
+- Clean, minimal (similar to Railbird / LeetCode)
+- Workspace-first
+- No clutter
 - Strong hierarchy
-- Use spacing and subtle contrast instead of heavy colors
-- Use Tailwind CSS only
 
 ---
 
 ## Code Rules
 
-- Use TypeScript.
-- Use Tailwind.
-- Keep components small.
-- Do NOT put large UI logic in `app/page.tsx`.
-- Use mock data only until backend work begins.
-- Do NOT build backend logic yet.
+- Use TypeScript
+- Use Tailwind
+- Keep components small
+- Do NOT put large UI logic in page.tsx
+🧱 Tech Stack
+
+Frontend:
+
+Next.js (App Router)
+TypeScript
+Tailwind CSS
+
+Backend (later, not now):
+
+FastAPI (Python)
+PostgreSQL
+Redis
+---
