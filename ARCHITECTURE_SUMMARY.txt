@@ -1,0 +1,33 @@
+app/layout.tsx- Defines global app metadata and the root document shell.
+app/page.tsx- Assembles the Railbird-inspired three-column workspace with minimal selected hand state.
+app/create/page.tsx- Renders the separate full-page structured hand builder.
+app/create/CreateHandForm.tsx- Provides the structured hand builder with voice stub, automatic active-position street rows, action dropdowns, bet sizes, and fold-aware filtering.
+components/workspace/SessionSidebar.tsx- Provides the Railbird-style left rail with switchable global navigation and session hand navigation.
+components/workspace/WorkspaceLayout.tsx- Provides the center replay workspace with table, decision card, and full hand/replay controls.
+components/workspace/SessionList.tsx- Renders expandable and collapsible review sessions.
+components/workspace/HandList.tsx- Renders clickable hands inside each session.
+components/workspace/WorkspaceTabs.tsx- Provides Replay and Context tabs for the center workspace.
+components/replay/PokerTable.tsx- Renders the mock table, hero cards, positions, board, and pot display.
+components/replay/BoardDisplay.tsx- Reveals board cards according to the current street.
+components/replay/ActionTimeline.tsx- Renders the clickable street-by-street action list.
+components/replay/ReplayControls.tsx- Provides previous, next, and jump-to-street controls.
+components/replay/StreetProgress.tsx- Displays the horizontal Preflop to Summary street progress indicator.
+components/coach/CoachPanel.tsx- Provides the fixed-width right coach panel with optimal play, explanation, chips, and input.
+components/coach/CoachPrompt.tsx- Generates mock prompts from the current action and street.
+components/coach/QuickResponseChips.tsx- Provides reusable quick response chips for coach input.
+components/coach/CoachFeedback.tsx- Renders mock coach feedback after a user response.
+components/context/HandContextPanel.tsx- Displays read-only hand metadata, notes, and raw hand history.
+components/input/InputModeToggle.tsx- Provides Structured Manual Input and Voice Input tabs for create.
+components/input/TextHandInput.tsx- Provides the pasted hand-history textarea component.
+components/input/VoiceRecorder.tsx- Provides the stubbed voice-input panel for the V1 UI.
+lib/mock-data.ts- Provides the clean Railbird-inspired mock sessions and hand summaries for the root workspace.
+lib/mockData.ts- Keeps the earlier richer mock replay data available for future full replay work.
+lib/hand-model.ts- Defines the shared create/review hand contract and serializes form drafts into reviewable hands.
+lib/hand-storage.ts- Temporarily persists created hands in sessionStorage until the backend is wired in.
+backend/app/main.py- Defines the minimal FastAPI hand API with health, create hand, and get hand endpoints.
+backend/app/schemas.py- Defines Pydantic schemas for hands, hand actions, and optimal play placeholders.
+backend/requirements.txt- Lists the minimal FastAPI and Uvicorn dependencies for the backend scaffold.
+backend/README.md- Documents the backend scope and deferred PostgreSQL, Redis, auth, and AI work.
+app/globals.css- Sets Tailwind, theme variables, system font usage, and base form typography.
+.gitignore- Ignores dependencies, build output, environment files, logs, coverage, and generated TypeScript artifacts.
+README.md- Documents the PokerSense MVP scope, local development command, and validation commands.
